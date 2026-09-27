@@ -8,7 +8,7 @@
 
 import Foundation
 import Testing
-@testable import leanring_buddy
+@testable import Clicky
 
 /// Lets tests move time forward to exercise age-based retention.
 private final class AdjustableTestClock {
