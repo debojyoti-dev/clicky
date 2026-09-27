@@ -110,8 +110,9 @@ final class DictationHistoryStore: ObservableObject {
     static let maximumEntryCountUserDefaultsKey = "dictationHistoryMaximumEntryCount"
     static let retentionPeriodUserDefaultsKey = "dictationHistoryRetentionPeriod"
 
-    static let interruptedByQuitFailureReason = "Clicky quit before replying."
-    static let interruptedByNewMessageFailureReason = "You started a new message before Clicky replied."
+    // Nonisolated so they can be used as default argument values.
+    nonisolated static let interruptedByQuitFailureReason = "Clicky quit before replying."
+    nonisolated static let interruptedByNewMessageFailureReason = "You started a new message before Clicky replied."
 
     /// Newest entry first.
     @Published private(set) var entries: [DictationHistoryEntry] = []
@@ -124,7 +125,9 @@ final class DictationHistoryStore: ObservableObject {
     private let currentDateProvider: () -> Date
 
     /// `~/Library/Application Support/<bundle id>/DictationHistory.json`
-    static func defaultHistoryFileURL() -> URL {
+    /// Nonisolated because it's used as a default argument, and default
+    /// arguments are evaluated outside the main actor.
+    nonisolated static func defaultHistoryFileURL() -> URL {
         let applicationSupportDirectoryURL = FileManager.default.urls(
             for: .applicationSupportDirectory,
             in: .userDomainMask

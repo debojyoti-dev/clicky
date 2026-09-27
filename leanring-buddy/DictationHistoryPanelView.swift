@@ -161,7 +161,7 @@ struct DictationHistoryPanelView: View {
                 .foregroundColor(DS.Colors.textTertiary)
                 .padding(.top, 1)
 
-            Text("Stored only on this Mac. Never uploaded, synced, or backed up.")
+            Text("This history is stored only on this Mac. It's never uploaded, synced, or backed up.")
                 .font(.system(size: 11))
                 .foregroundColor(DS.Colors.textTertiary)
                 .fixedSize(horizontal: false, vertical: true)
